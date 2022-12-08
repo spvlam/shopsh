@@ -18,10 +18,10 @@ const upload = require('../middleware/upload')
     // var upload = multer({ storage: storage });
 // :slur mean that we pass (by tag a ) and it will receive its query param
 // router.get('/create',courseController.create)
-router.get('/forum',courseController.forum)
-router.get('/create',courseController.create)
-router.post('/store',upload.single('file_upload'),courseController.store);
-router.get('/:slur',courseController.show)
+router.get('/course/forum',courseController.forum)
+router.get('/course/create',courseController.create)
+router.post('/course/store',upload.single('file_upload'),courseController.store);
+router.get('/course/:slur',courseController.show)
 router.get('/',courseController.index);
 
 
