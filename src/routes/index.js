@@ -5,7 +5,9 @@ const courseRoute = require('./course')
 const meRoute = require('./me');
 const LogInRoute = require('./logIn');
 function routes(app){
-    
+    app.use('/test',function(req,res){
+        res.send('abc')
+    })
     app.use('/home',siteRoute);
     app.use('/',courseRoute);
     app.use('/news',newRoute);

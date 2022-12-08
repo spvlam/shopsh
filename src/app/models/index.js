@@ -4,7 +4,7 @@ const mongoose= require('mongoose')
 
 async function connect(){
     try {
-        await mongoose.connect('mongodb+srv://vercel-admin-user:spvlam28@cluster0.ubjvpxo.mongodb.net/f8_education')
+        await mongoose.connect('mongodb+srv://vercel-admin-user:vercel-admin-user @cluster0.ubjvpxo.mongodb.net/f8_education')
         console.log("connect sucessfully !!!")
     } catch (error) {
         if(error){
