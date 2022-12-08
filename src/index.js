@@ -51,6 +51,6 @@ routes(app)
 // connect to data (moogoDB)
 const db = require('./config/db/index');
 db.connect();
-app.listen(port,()=> console.log(" App is listening on port 3000. "))
+app.listen(port,()=> console.log("App is listening on port 3000."))
 
 

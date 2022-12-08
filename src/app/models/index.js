@@ -6,7 +6,7 @@ async function connect(){
     console.log('abc')
     try {
         await mongoose.connect('mongodb+srv://vercel-admin-user:vercel-admin-user@cluster0.ubjvpxo.mongodb.net/f8_education')
-        console.log("connect sucessfully abc !!!")
+        console.log("connect sucessfully !!!")
     } catch (error) {
         if(error){
             console.log("connect failed !!!")
