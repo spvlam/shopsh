@@ -1,0 +1,5 @@
+
+{
+    "ext":"js mjs json scss",
+    "//comment":"this function of nodemon.jsons with 'ext' key is watch the change of all the file whose ending with this"
+}

@@ -1,0 +1,134 @@
+<form class="formReal" action="/me/submit" method="post">
+ <style>
+   a{
+    color: white;
+   }
+ </style>
+<div class="container" style="background-color: black;">
+<div class="mt-5 ">
+  <h2 class="colorrr">My Course</h2>
+</div>
+  <div class="d-flex .flex-row mt-4 align-items-center ">
+    <div class="form-check">
+    <input class="form-check-input" name="checkbox" type="checkbox" value="" id="defaultCheck1">
+    <label style="color:white ;" class="form-check-label" for="checkbox">
+      Select All
+    </label>
+  </div>
+    <select required name="action" class="form-control" id="exampleFormControlSelect1" >
+        <option value="" >Option</option>
+        <option value="delete">Delete</option>
+    </select>
+    {{!-- // type = submit will automatic submit, so i need use e.preventDefault  --}}
+    <button  id="doneClass" class="btn btn-primary btn-done " disabled>Done</button>
+</div>
+<table class="table mt-3">
+  <thead  style="color: white;">
+    <tr>
+      <th scope="col">Check</th>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">VideoID</th>
+      <th scope="col">TimeCreating</th>
+      <th scope="col">Update</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody style="color: white;">
+    {{#each course}}
+    <tr>
+      <th><input id="checkElement" type="checkbox" name="checkPart" value="{{this._id}}"></th>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.title}}</td>
+      <td>{{this.videoID}}</td>
+      <td>{{this.createdAt}}</td>
+    
+        <td><a href="{{this._id}}/fillCourse">Repair</a></td>
+        <td  data-toggle="modal" data-target="#deleteModel" data-id="{{this._id}}" style="  cursor:pointer"> Delete </td>
+    </tr>
+    {{/each}}
+     
+  </tbody>
+</table>
+</div>
+</form>
+{{!-- form hidden for submit --}}
+<form name="formForSubmit" method="POST"></form>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure ???</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete this song ???
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button id="btn-yes" type="button" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-4">
+<a href="/me/garbage"><button type="button" class="btn btn-primary">Garbage Can ({{count}})</button></a>
+</div>
+
+<script>
+  // use DOMContentloaded because wed will read script first
+  document.addEventListener('DOMContentLoaded',function(){
+    var modal = document.getElementById('deleteModel');
+    var form = document.forms['formForSubmit'];
+    $('#deleteModel').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var id = button.data('id')
+    var yes = document.getElementById("btn-yes");
+    yes.onclick = function(){
+      form.action = id +'/delete'+'?_method=DELETE'
+      form.submit()
+    }
+    })
+   // create for choose checkbox 
+   const checkAll = $('input[name="checkbox"]')
+   const checkPart = $('input[name="checkPart"]')
+   const checkAllByid =$('#defaultCheck1') // when we use check with id , then we now can use ${this} to get the attr and replace it
+     // jquery with id can get only 1 element
+    const done = $('.btn-done')
+   checkAll.change(()=>{
+       checkPart.prop('checked',checkAll.prop('checked'))
+      if(checkAll.prop('checked')) done.attr('disabled',false)
+      else   done.attr('disabled',true)
+   })
+
+   checkPart.change(()=>{
+      const isCheck = checkPart.length === $('input[name="checkPart"]:checked').length;
+      checkAll.prop('checked',isCheck)
+      if($('input[name="checkPart"]:checked').length>=1){
+         done.attr('disabled',false)
+   }else{
+        done.attr('disabled',true)
+   }
+   })
+   // done button for submit
+   //get form real 
+   const formReal=$('.formReal')
+   //done get by id
+   const doneid=$('doneClass')
+   doneid.on('click',function(){
+    formReal.submit()
+   })
+
+ })
+
+  
+</script>
+
+
+
+
+

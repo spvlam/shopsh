@@ -1,0 +1,57 @@
+{{!-- version4.3 --}}
+<div class="container mt-5">
+    <div class="row">
+        {{#each course}}
+    <div class="card " style="width: 20rem; margin:20px;">
+        <a href="/course/{{this.slur}}">
+    <img src="data:{{this.img.contentType}};base64,{{this.img.data}}" class="card-img-top" alt="..." style="height: 318px;">
+         {{!-- <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="abc" class="card-img-top"/> --}}
+        </a>
+    <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.discription}}</p>
+        <a href="#" class="btn btn-primary">Buy imediatly</a>
+    </div>
+    </div> 
+    {{/each}}  
+    </div>
+</div>
+{{!-- <div class="mt-4">
+    {{#each course}}
+    <div class="card" style="width: 18rem;">
+        <a href="course/{{this.slur}}">
+    <img src="{{this.imagine}}" class="card-img-top" alt="...">
+        </a>
+    <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.discription}}</p>
+        <a href="#" class="btn btn-primary">Buy imediatly</a>
+    </div>
+    </div> 
+    {{/each}}  
+</div> --}}
+     
+{{!-- <div class="row mt-4 container">
+    {{#each course }}
+    <div class="col-sm-4 mt-4 ">
+        
+        <div class="card row__magin">
+            <a href="course/{{this.slur}}">
+            <img class="box__imagine"src="{{this.imagine}}" class="card-img-top" >
+            </a>
+            <div class="card-body">
+                <a href="course/{{this.slur}}">
+                <h5 class="card-title">{{this.title}}</h5>
+                </a>
+                <p class="card-text">{{this.description}}</p>
+                <a href="#" class="btn btn-primary">Buy imadiatly</a>
+            </div>
+        </div>
+    
+    </div>
+        {{/each}}
+</div> --}}
+
+

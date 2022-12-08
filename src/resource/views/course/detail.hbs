@@ -1,0 +1,260 @@
+{{!-- awesome icon library  --}}
+<style>
+  
+   div.b {
+   -webkit-text-decoration-line: underline; /* Safari */
+   text-decoration-line: underline; 
+}
+
+div.c {
+   -webkit-text-decoration-line: line-through; /* Safari */
+   text-decoration-line: line-through; 
+   opacity: 0.7;
+}
+   .appraise{
+      display: flex;
+      flex-direction: row;
+     align-items: center;
+     justify-content: space-around;
+     color: red;
+   
+   }
+   .box{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+   }
+   .vr{
+      width: 2px;
+      height: 15px;
+      background-color: rgb(145, 145, 139);
+   }
+   .horizontal{
+       width: 80px;
+      height: 3px;
+      background-color: rgb(145, 145, 139);
+        position: absolute;
+      top: 0;
+   }
+ button{
+   border: 1px solid rgb(221, 215, 215);
+ }  
+ .size{
+   padding: 0 20px;
+   margin: 0 5px 10px 5px;
+ }
+ .btntest{
+   margin: 10px 20px;
+   display:flex;
+   width: 60%;
+   flex-wrap: wrap;
+ }
+ .mar{
+ 
+   margin-top: 100px;
+ }
+</style>
+{{!-- <div class="space container mt-6 row">
+     use btn here to push the content of below part --}}
+<div class=" space">
+    <div class="col-sm-6 mar">
+     <div class="img-tab">
+     <iframe  class="img-video"  max-width="500" height="330px" src="https://www.youtube.com/embed/{{course.videoID}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+     <img style="height: 100%;width:65%;"  class="none none1" src="data:{{course.img.contentType}};base64,{{course.img.data}}" alt="">
+     <img style="height: 40%;width:65%; display: none;" class="none none2" src="/img/shoe7.jpg" alt="" >
+     <div class="img" style="margin-left: 10px;">
+      <img style="height: 40%;" class="card-img" src="data:{{course.img.contentType}};base64,{{course.img.data}}" alt="">
+      <img style="height: 40%;" class="card-img " src="/img/shoe7.jpg" alt="" >
+     </div>
+      </div class="imf">
+         <h4>The information of {{course.title}}</h4>
+                  <div id="accordion">
+                     <div class="card">
+                        <div class="card-header" id="headingOne">
+                           <h5 class="mb-0">
+                           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              Originally 
+                           </button>
+                           </h5>
+                        </div>
+
+               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                 The earliest known shoes are sagebrush bark sandals dating from approximately 7000 or 8000 BC, found in the Fort Rock Cave in the US state of Oregon in 1938.[5] The world's oldest leather shoe, made from a single piece of cowhide laced with a leather cord along seams at the front and back, was found in the Areni-1 cave complex in Armenia in 2008 and is believed to date to 3500 BC.[6][7] Ötzi the Iceman's shoes, dating to 3300 BC, featured brown bearskin bases, deerskin side panels, and a bark-string net, which pulled tight around the foot.[6] The Jotunheimen shoe was discovered in August 2006: archaeologists estimate that this leather shoe was made between 1800 and 1100 BC,[8] making it the oldest article of clothing discovered in Scandinavia.
+                  </div>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Deviation Place
+                  </button>
+                  </h5>
+               </div>
+               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                     Number of Product
+                  </button>
+                  </h5>
+               </div>
+               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+               </div>
+            </div>
+                  </div>
+      </div>
+   <div class="col-sm-6 mar" style="padding:0 10px 40px ;">
+      <h2 style="color: black; text-align:center">
+         {{course.title}}
+      </h2>
+      <div class="appraise">
+         <div class="b" >5.0
+         </div>
+         <div class="vr"></div>
+         <div class="b" >
+         110 Appraise
+         </div>
+         <div class="vr"></div>
+         <div class="b" >
+         436 Saled
+         </div>
+      </div>
+      <div style="width: 100%; height:100px; background-color:beige ; opacity:0.8;">
+         <div class="box" style="font-size:20px;">
+               <div class="c">150000-175000</div>
+               <h2 style="color: red;">95000-120000</h2>
+               <div style="background-color:red ; color:white">44% discount</div>
+         </div>
+         <div class="box">
+               <div style="background-color: red; border-radius:40% ;padding:10px; ">Free</div>
+               <div>
+                     <div>every is cheap </div>
+                     <div style="font-size:15px ;" > the good price to conpare with other product</div>
+               </div>  
+               
+         </div>
+      </div>
+      {{!-- //color  --}}
+      <div  style="display: flex; flex-direction:row">
+      <label style=" margin : 5px 0 20px 0px;width:100px; padding-right: 28px;" for="">Color</label>
+      <div class="btntest">
+         <button class="size">White</button>
+         <button class="size">Red</button>
+         <button class="size">Black</button>
+         <button class="size">Green</button>
+      </div>
+      </div>
+      {{!-- //size  --}}
+      <div style="display: flex; flex-direction:row">
+      <label style=" margin : 5px 0 20px 0px;width:100px; padding-right: 28px;" for="">Size    </label>
+      <div class="btntest">
+         <button class="size">35</button>
+         <button class="size">36</button>
+         <button class="size">37</button>
+         <button class="size">38</button>
+         <button class="size">39</button>
+         <button class="size">40</button>
+         <button class="size">41</button>
+         <button class="size">42</button>
+         <button class="size">43</button>
+         <button class="size">44</button>
+         <button class="size">45</button>
+      </div>
+      </div>
+      {{!-- //quantity  --}}
+   <div style="display: flex; flex-direction:row">
+      <label style=" margin : 5px 0 20px 0px;width:100px; padding-right: 28px;" for="">Quantity</label>
+      <div class="btntest">
+      <button class="btnChange sub ">-</button>
+      <button class="result" style="padding:0 20px ;">1</button>
+      <button class="btnChange add ">+</button>
+      </div>
+   </div>
+   <div style="margin-top: 15px; ">
+      <button style=" color:red; border:1px solid red; background-color:white;">ADD TO YOUR TROLLEY</button>
+      <button style=" color:red; border:1px solid red; background-color:white;margin-left:40px">BUY IMADIATLY</button>
+   </div>
+   </div>
+    
+</div>
+
+<div style="background-color:white ; padding-top:20px">
+   <h2 style="text-align:center;">Some other shoes</h2>
+   <div class="container" >
+    <div class="row">
+        {{#each course2}}
+    <div class="card " style="width: 20rem; margin:20px;">
+        <a href="/course/{{this.slur}}">
+    <img src="data:{{this.img.contentType}};base64,{{this.img.data}}" class="card-img-top" alt="..." style="height: 318px;">
+         {{!-- <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="abc" class="card-img-top"/> --}}
+        </a>
+    <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text">{{this.discription}}</p>
+        <a href="#" class="btn btn-primary">Buy imediatly</a>
+    </div>
+    </div> 
+    {{/each}}  
+    </div>
+   
+</div>
+</div>
+
+<script>
+   document.addEventListener('DOMContentLoaded',function(){
+      const sub = $('.btnChange')
+      const res = document.querySelector('.result')
+      var result=1;
+      sub.on('click',function(){
+         if($(this).hasClass('add')){
+            result++
+           res.innerHTML = `${result}`
+         }else{
+            if(result!=1){
+               result--;
+                res.innerHTML = `${result}`
+            }
+         }
+         
+      })
+      // click imagine
+      const card = $('.card-img')
+      console.log(card)
+      //click size 
+      const size =$('.size')
+      var img1 = document.querySelector('.img-video')
+      var non1 = document.querySelector('.none1')
+      var img = $('.img')
+     size.on('click',function(){
+      var count=Math.floor(Math.random()*10);
+      if(count==3 || count==1 ){
+            img.html(' <img style="height: 40%;" class="card-img " src="/img/shoe7.jpg" alt="" >')
+      }else if(count ==5 || count ==2){
+            img.html(' <img style="height: 40%;" class="card-img " src="/img/shoe2.jpg" alt="" >')
+      }
+      else if(count==7 || count ==8){
+            img.html(' <img style="height: 40%;" class="card-img " src="/img/shoe4.jpg" alt="" >')
+      }
+      else if(count==9 || count ==10){
+            img.html(' <img style="height: 40%;" class="card-img " src="/img/shoe3.jpg" alt="" >')
+      }
+     
+     })
+   })
+</script>
+
+

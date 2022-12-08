@@ -1,0 +1,119 @@
+<form action="submit" method="POST" id="formReal" class="container " style="background-color:black ;" >
+
+<div class="mt-5">
+
+<table style="color: white;" class="table mt-5">
+  <h2 style="color:white ;">List of Deletion Course</h2>
+  <div class="d-flex flex-row align-items-center" style="margin-bottom:20px ;">
+
+    <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input " id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1" style="color: white;">Check All</label>
+  </div>
+   <select name="action" class="form-control" id="exampleFormControlSelect1" required>
+      <option value="">Option</option>
+      <option>Recover</option>
+      <option>Perpetual Delete</option>
+    </select>
+    <button class="btn btn-primary btn-primaryay" type="submit" disabled>Button</button>
+  </div>
+  <thead>
+    <tr >
+      <th scope="col">Check</th>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">VideoID</th>
+      <th scope="col">TimeDeletion</th>
+      <th scope="col">Update</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each course}}
+    <tr>
+      <th  scope="row"><input name="checkabc" value="{{this._id}}" type="checkbox" class="form-check-input" ></th>
+      <th >{{sum @index 1}}</th>
+      <td>{{this.title}}</td>
+      <td>{{this.videoID}}</td>
+      <td>{{this.deletedAt}}</td>
+    
+        <td  class="recover" data-id="{{this._id}}" style="cursor: pointer;">recover</td>
+        <td  class="delete" data-toggle="modal" data-target="#deleteModel" data-id="{{this._id}}" style=" cursor:pointer">Perpetual Delete </td>
+    </tr>
+    {{/each}}
+     
+  </tbody>
+
+</table>
+
+</div>
+</form>
+<a href="/me/course"><button type="button" class="btn btn-primary textcentral">List of Course ({{count}})</button></a>
+
+<form name="formForSubmit" method="post"></form>
+
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    const recover = $('.recover') 
+    const deleteaa = $(".delete")
+    const recoverAr = Array.from(recover)
+    const form= $('form[name="formForSubmit"]')
+    for(recoverPart of recoverAr){
+      recoverPart.onclick = function(){
+         console.log(this.dataset.id)
+         const id =this.dataset.id
+         form[0].action = id + '/recovery'+'?_method=PUT'
+         form[0].submit()
+      }
+    }
+    deleteaa.click(function(){
+      console.log("abc")
+      console.log($(this).attr("data-id"))
+       form[0].action= $(this).attr("data-id") + '/permutualdelete'+'?_method=DELETE'
+        form[0].submit()
+    })
+    const checkall = $('#exampleCheck1')
+    const checkpart=$('input[name="checkabc"]')
+    const btn =$('.btn-primaryay')
+
+
+    checkall.change(function(){
+        checkpart.prop('checked',checkall.prop('checked'))
+        console.log(checkall.prop('checked'))
+        if(checkall.prop('checked')==true){
+          btn.attr('disabled',false)
+        }
+    })
+    checkpart.change(function(){
+      const checkedPart = $('input[name="checkabc"]:checked')
+         var check = checkpart.length  === checkedPart.length
+         checkall.prop('checked',check)
+         if(checkedPart.length>=1){
+              btn.attr('disabled',false)
+         }else{
+              btn.attr('disabled',true)
+         }
+    })
+  const formReal=$('#formReal')
+   btn.on('click',function(){
+    formReal.submit()
+  })
+ 
+  
+  
+  
+  })
+   /* for(deletePart of Array.from(delete)){
+      deletePart.onclick = function(){
+        form[0].action= this.dataset.id + '/permutualdelete'+'?_method=DELETE'
+        form[0].submit()
+      }
+    } */
+
+    // or  we can write delete as following
+    
+
+
+
+
+</script>

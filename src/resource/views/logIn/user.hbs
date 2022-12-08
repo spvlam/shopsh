@@ -1,0 +1,95 @@
+
+<div class="part1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">HOME</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="create" >Post product <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >Ware House</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" >Garbage Can</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link Cart" href="#">Cart</a>
+      </li>
+    </ul>
+  <div style="display: flex; flex-direction:row ; align-item: center; justify-content:space-around; width:200px">
+     {{#each user}}
+    
+    <li class="nav-item dropdown" style="list-style: none">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown"   aria-expanded="false">
+          <img src="{{this.avatar}}" alt="" style="border-radius: 50%; width:30px; height:30px;" >
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" >Trolley</a>
+          <a class="dropdown-item" href="#">History</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/course">Log Out</a>
+        </div>
+    </li>
+     <p style="font-weight:500 ; margin:5px; color:green">{{this.name}}</p>
+     {{/each}}
+  </div>
+  </div>
+</nav>
+</div>
+
+<div class="part2" >
+</div>
+<div class="part3">
+<h2>It start with the simple ideal : Create quanlity, well-designed product that i want myself</h2>
+</div>
+<div class="part4">
+   <div class="part4a">
+    <h2 style="position: absolute; bottom:-93%;color:white; left:10%;">Shop Man collection</h2>
+   </div>
+   <div class="part4b">
+     <h2 style="position: absolute; bottom:-93%;color:white;right:10%;">Shop Women collection</h2>
+    </div>
+</div>
+<div >
+  <h1 style="text-align: center;" >BEST SELLER</h1>
+</div>
+
+<div class="container grip4 ">
+  {{#each course}}
+       <div class="card col-md-3" style="width: 22rem;">
+        <div>
+          <a href="/course/{{this.slur}}">
+            <img style=" height:319px;"src="data:{{this.img.contentType}};base64,{{this.img.data}}" class="card-img-top" alt="...">
+          </a>
+        </div>
+            <div class="card-body">
+              <h5 class="card-title">{{this.title}}</h5>
+              <p class="card-text">{{this.description}}</p>
+              <a href="#" class="btn btn-primary">Buy imediatly</a>
+            </div>
+      </div>
+  {{/each}}
+</div>
+  
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+     const part2 = $('.part2')
+     const part22 = document.querySelector('.part2')
+    
+     
+          
+  })
+</script>
