@@ -18,7 +18,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --inspect src/index.js",
-    "watch": "node-sass -w src/resource/sass -o src/public/css"
+    "watch": "node-sass -w src/resource/sass -o src/public/css",
+    "build": "node build --output src/public"
   },
   "author": "",
   "license": "ISC",
