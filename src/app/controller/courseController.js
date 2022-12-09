@@ -28,7 +28,6 @@ class courseController {
          res.render('course/create')
     }
      store(req,res,next){
-        console.log(req.files)
        const formdata = req.body
        formdata.imagine = `https://img.youtube.com/vi/${formdata.videoID}/sddefault.jpg`;
        formdata.slur=formdata.title
