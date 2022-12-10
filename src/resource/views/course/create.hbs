@@ -11,7 +11,7 @@
    margin-top: 40px;
   }
 </style>
-<form class="container mt-8" method="post" action="/course/store" class="mt-6 mt-8" enctype="multipart/form-data" >
+<form name="form" class="container mt-8" method="POST" action="/course/store" class="mt-6 mt-8" enctype="multipart/form-data" >
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" name="title" >
@@ -35,5 +35,15 @@
     <label for="file_upload">File_upload</label>
     <input type="file" class="form-control" id="file_upload" name="file_upload"  >
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button  type="button" class="btn btn-primary">Submit</button>
 </form>
+
+<script>
+  btn =document.getElementsByClassName('btn-primary')
+   form= document.querySelector('form[name="form"]');
+   btn[1].onclick=function(){
+    form.submit();
+   }
+</script>
+
+
