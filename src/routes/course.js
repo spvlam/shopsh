@@ -20,7 +20,7 @@ const upload = require('../middleware/upload')
 // router.get('/create',courseController.create)
 router.get('/course/forum',courseController.forum)
 router.get('/course/create',courseController.create)
-router.post('/course/store',upload.single('file_upload'),courseController.store);
+router.post('/course/create',upload.single('file_upload'),courseController.store);
 router.get('/course/:slur',courseController.show)
 router.get('/',courseController.index);
 
