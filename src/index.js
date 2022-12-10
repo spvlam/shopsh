@@ -39,8 +39,8 @@ app.set('view engine','hbs');
 
 // use static files
 //we can use : app.use(express.static(path.join(__dirname, 'public'))); or
-app.use(express.static('src/public'))
-
+app.use(express.static(__dirname+'/public'))
+console.log(__dirname)
 // use morgan to log http req and res
 // HTTP logger
 app.use(morgan('tiny'));
