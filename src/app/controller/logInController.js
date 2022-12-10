@@ -28,7 +28,7 @@ class logInController
     
     }
     detail2(req,res,next){
-      users.find({email:'testlam28@gmail.com'})
+      users.find({email:'spvlam28@gmail.com'})
          .then(user1=>{
             courses.find({deleted:false})
             .then(course=>{
