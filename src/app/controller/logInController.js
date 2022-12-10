@@ -33,7 +33,8 @@ class logInController
             courses.find({deleted:false})
             .then(course=>{
                res.render('login/user',{layout:'user.hbs',user:MultiMongooseObject(user1),course:MultiMongooseObject(course)})
-            })      
+            })
+            .catch(next)      
          })
          .catch(next)
     }
