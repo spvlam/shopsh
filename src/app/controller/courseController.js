@@ -37,7 +37,7 @@ class courseController {
        }
        const coursea = new course(formdata)
        coursea.save()
-            .then(course=>res.redirect('back'))
+            .then(course=>res.redirect('/'))
             .catch(err=>console.log(err))
     //  res.json(req.body)
     //  console.log(req.file)
