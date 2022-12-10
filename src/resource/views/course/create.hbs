@@ -39,11 +39,13 @@
 </form>
 
 <script>
-  btn =document.getElementsByClassName('btn-primary')
+  document.addEventListener('DOMContentLoaded',function(){
+    btn =document.getElementsByClassName('btn-primary')
    form= document.querySelector('form[name="form"]');
    btn[1].onclick=function(){
     form.submit();
    }
+  })
 </script>
 
 
