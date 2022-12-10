@@ -11,6 +11,7 @@ class logInController
     detail(req,res,next){
        users.find({email:req.body.email,password:req.body.password})
          .then(user1 => {
+            console.log("successfully get data")
             if (user1.length != 0) {
                courses.find({deleted:false})
                .then(course=>{
