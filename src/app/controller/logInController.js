@@ -9,32 +9,28 @@ class logInController
         res.render('logIn/signUp',{layout: 'login.hbs'})
     }
     detail(req,res,next){
-       users.find({email:req.body.email,password:req.body.password})
-         .then(user1 => {
-            console.log("successfully get data")
-            if (user1.length != 0) {
-               courses.find({deleted:false})
-               .then(course=>{
-                  res.render('login/user',{layout:'user.hbs',user:MultiMongooseObject(user1),course:MultiMongooseObject(course)})
-               })    
-               // res.render('login/user',{layout:'user.hbs',user:MultiMongooseObject(user1)})
+       const user = users.find({email:req.body.email,password:req.body.password})
+       const course = courses.find({deleted:false})
+       Promise.all([user,course])
+          .then(values=>{
+            if(values[0].length!=0){
+               res.render('Login/user',{layout:'user.hbs',user:MultiMongooseObject(values[0]),course:MultiMongooseObject(values[1])})
+            }else{
+               res.redirect('back')
             }
-            else{ res.redirect('back')}
-         })
-         .catch(()=>{
-            console.log('abc')
-            res.redirect('back')
-         })
-    
+          })
+          .catch(next)
     }
     detail2(req,res,next){
-      users.find({email:'spvlam28@gmail.com'})
-         .then(user1=>{
-            courses.find({deleted:false})
-            .then(course=>{
-               res.render('login/user',{layout:'user.hbs',user:MultiMongooseObject(user1),course:MultiMongooseObject(course)})
-            })
-            .catch(next)      
+     const user = users.find({email:'spvlam28@gmail.com'})
+     const course =  courses.find({deleted:false})
+     Promise.all([user,course])
+         .then(values=>{
+            if(values[0].length!=0){
+               res.render('Login/user',{layout:'user.hbs',user:MultiMongooseObject(values[0]),course:MultiMongooseObject(values[1])})
+            }else{
+               res.redirect('back')
+            }
          })
          .catch(next)
     }
