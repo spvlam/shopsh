@@ -2,6 +2,9 @@ const course = require('../models/courses')
 const {MultiMongooseObject}= require('../../unity/mongoose')
 const{MongooseObject}=require('../../unity/mongoose')
 const { response } = require('express')
+const fs = require('fs')
+const path =require('path')
+const { callbackify } = require('util')
 async function test(courseComponent,newdata){
     await courseComponent.updateOne(newdata)
 }
@@ -39,9 +42,13 @@ class meController {
             .then(course=>{
                 const formdata = req.body
                 formdata.imagine = `https://img.youtube.com/vi/${formdata.videoID}/sddefault.jpg`;
+                formdata.img={
+                    data: fs.readFileSync(path.join(__dirname +'/..'+'/..'+'/..'+'/uploads/' + req.file.filename)).toString('base64'),
+                    contentType: 'image/jpeg'
+                   }
                 formdata.slur=formdata.title
                 test(course,formdata)
-                res.redirect('/course')
+                res.redirect('/')
             })
             .catch(next)
     }
