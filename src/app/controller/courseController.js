@@ -4,6 +4,7 @@ const path = require('path')
 const {MultiMongooseObject}= require('../../unity/mongoose')
 const{MongooseObject}= require('../../unity/mongoose')
 const { callbackify } = require('util')
+const cart = require('../models/cart')
 class courseController {
      
      index(req,res,next){
@@ -45,6 +46,30 @@ class courseController {
     forum(req,res,next){
       res.render('course/forum')
     }
+    trolley(req,res,next){
+      const product = new cart(req.body)
+
+      product.save()
+           .then(test=>{   
+              res.redirect('/course/trolley/detail')
+            })
+           .catch(next)
+    }
+    trolleyDisplay(req,res,next){
+      Promise.all([cart.count(),cart.find({}),cart.find({})])
+      .then(value=>{
+         var sumele = value[2].reduce((initial,cur)=> initial + cur.quanlity*cur.price,0)
+         console.log(sumele)
+         res.render('course/trolley',{layout:'user',cart:MultiMongooseObject(value[1]),count:value[0],sumele})  
+      }) 
+      .catch(next)
+    }
+    delete(req,res,next){
+       cart.deleteMany({name:req.body.nameINT,quanlity:req.body.quanlity})
+            .then(()=>{res.redirect('back')})
+            .catch(next)
+    }
+    
 }
 
 module.exports = new courseController

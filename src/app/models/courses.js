@@ -14,6 +14,7 @@ const course = new Schema({
         contentType:String
 
     },
+    price:{type:Number, default:99000},
     deleted:{type:Date},
 },
 {

@@ -34,6 +34,9 @@ app.engine('hbs', exphbs.engine({
 hdb.registerHelper('sum',function(a,b){
     return a+b;
 })
+hdb.registerHelper('multiply',function(a,b){
+    return a*b;
+})
 
 app.set('view engine','hbs');
 

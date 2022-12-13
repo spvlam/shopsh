@@ -1,3 +1,4 @@
+const { Router } = require('express');
 const express = require('express');
  const router = express.Router();
 const courseController = require('../app/controller/courseController');
@@ -18,6 +19,10 @@ const upload = require('../middleware/upload')
     // var upload = multer({ storage: storage });
 // :slur mean that we pass (by tag a ) and it will receive its query param
 // router.get('/create',courseController.create)
+router.post('/course/trolley/gia/delete',courseController.delete)
+router.delete('/course/trolley/detail',courseController.delete)
+router.post('/course/trolley/detail',courseController.trolley)
+router.get('/course/trolley/detail',courseController.trolleyDisplay)
 router.get('/course/forum',courseController.forum)
 router.get('/course/create',courseController.create)
 router.post('/course/create',upload.single('file_upload'),courseController.store);

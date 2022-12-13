@@ -1,0 +1,203 @@
+
+<div class="part1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="#">HOME</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="create" >Post product <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >Ware House</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" >Garbage Can</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link Cart" href="#">Cart</a>
+      </li>
+    </ul>
+  <div style="display: flex; flex-direction:row ; align-item: center; justify-content:space-around; width:200px">
+    
+    <li class="nav-item dropdown" style="list-style: none">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  data-toggle="dropdown"   aria-expanded="false">
+          <img src="/img/ava.png" alt="" style="border-radius: 50%; width:30px; height:30px;" >
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" >Trolley</a>
+          <a class="dropdown-item" href="#">History</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/course">Log Out</a>
+        </div>
+    </li>
+     <p style="font-weight:500 ; margin:5px; color:green">ADMIN</p>
+  </div>
+  </div>
+</nav>
+</div>
+<link rel="stylesheet" href="/css/trolley.css">
+<style>
+    .mt-8{
+   padding: 40px 40px 40px 40px;
+   margin-top: 80px;
+  }
+  .disappear{
+    display: none;
+  }
+</style>
+<div class="card mt-5 mt-8 container">
+            <div class="row">
+                <div class="col-md-8 cart">
+                    <div class="title">
+                        <div class="row">
+                            <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                            <div class="col align-self-center text-right text-muted">{{count}} items</div>
+                        </div>
+                    </div>    
+                    {{#each cart}}
+                    <div class="row border-top border-bottom">
+                        <div class="row main align-items-center">
+                            <div class="col-2"><img class="img-fluid" src="data:image/jpeg;base64,{{this.imgdata}}"></div>
+                            <div class="col">
+                                <div class="row text-muted">{{this.name}}</div>
+                                <div class="row">Cotton T-shirt</div>
+                            </div>
+                            <div class="col">
+                                <a class="subtract">-</a><a  class="border">{{this.quanlity}}</a><a class="add">+</a>
+                            </div>
+                            <div class="col totalofeach">&euro; <div class="total">{{multiply this.quanlity this.price }}</div> <span class="close" data-toggle="modal" data-target="#exampleModal" data-whatever = "{{this.name}}" data-quanlity="{{this.quanlity}}">&#10005;</span></div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+                </div>
+                <div class="col-md-4 summary">
+                    <div><h5><b>Summary</b></h5></div>
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">ITEMS {{count}}</div>
+                        <div class="col text-right">&euro;<div class="sumele">{{sumele}}</div> </div>
+                    </div>
+                    <form>
+                        <p>SHIPPING</p>
+                        <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
+                        <p>GIVE CODE</p>
+                        <input id="code" placeholder="Enter your code">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right">&euro; <div class="totalREAL"> {{sum sumele 5}}</div></div>
+                    </div>
+                    <button class="btn_trolley">CHECKOUT</button>
+                </div>
+            </div>
+           
+        </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sureeeee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button name="success" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- disappear form for submit --}}
+<form style="display: none;" name="delete" method="post" action="?_method=delete">
+  <input type="text" name="nameINT">
+  <input type="text" name="quanlity">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+        const close =$('.close')
+         var name
+         var quanlity
+         const form = document.querySelector('form[name="delete"]')
+         const success =$('button[name="success"]')
+         const inpName=$('input[name="nameINT"]')
+          const quanli=$('input[name="quanlity"]')
+
+        close.on('click',function(){
+          name = $(this).data('whatever')
+          quanlity = $(this).data('quanlity')
+          inpName.val(name)
+          quanli.val(quanlity)
+           
+        })
+        $('#exampleModal').on('show.bs.modal', function (event) {
+              
+               success.on('click',function(){
+                 form.submit()
+               })
+})
+
+var subtract = $('.subtract')
+var add =$('.add')
+var total =$('.totalREAL')
+var sumM = $('.sumele')
+var totalREAL = Number(total.html())
+var sumREAL = Number(sumM.html())
+console.log(sumM)
+console.log(typeof( totalREAL))
+console.log(sumREAL)
+
+add.on('click',function(){
+ var quanlityelement = $(this).parent('.col').children('.border')
+ var quanlity2 = quanlityelement.html()
+ var totalofeachElement =$(this).parent('.col').parent('.row').children('.totalofeach').children('.total')
+ var totalofeach=totalofeachElement.html()
+ var priceofeach = totalofeach/quanlity2
+ quanlity2++;
+ totalofeachElement.html(quanlity2*priceofeach)
+ quanlityelement.html(quanlity2)
+ totalREAL+=priceofeach;
+ sumREAL+=priceofeach
+ total.html(totalREAL)
+ sumM.html(sumREAL)
+})
+subtract.on('click',function(){
+ var quanlityelement = $(this).parent('.col').children('.border')
+ var quanlity2 = quanlityelement.html()
+ var totalofeachElement =$(this).parent('.col').parent('.row').children('.totalofeach').children('.total')
+ var totalofeach=totalofeachElement.html()
+ var priceofeach = totalofeach/quanlity2
+ quanlity2--;
+ totalofeachElement.html(quanlity2*priceofeach)
+ quanlityelement.html(quanlity2)
+ totalREAL-=priceofeach;
+ sumREAL-=priceofeach
+ total.html(totalREAL)
+ sumM.html(sumREAL)
+ if(quanlity2==0){
+   var totalofeachElement =$(this).parent('.col').parent('.row').parent('.row').addClass('disappear')
+ }
+})
+  })
+
+</script>
+
+
